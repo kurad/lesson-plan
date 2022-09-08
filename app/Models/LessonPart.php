@@ -15,4 +15,9 @@ class LessonPart extends Model
         'duration',
         'lesson_id',
     ];
+
+    public function lesson()
+    {
+        return $this->belongsTo(Lesson::class);
+    }
 }

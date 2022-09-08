@@ -34,4 +34,21 @@ class Lesson extends Model
     {
         return $this->hasMany(LessonPart::class);
     }
+    public function lessonPartCompetenses()
+    {
+        return $this->hasMany(LessonPartCompetence::class);
+    }
+    public function lessonPartLearnerActivities()
+    {
+        return $this->hasMany(LessonPartLearnerActivity::class);
+    }
+
+    public function lessonPartTeacherActivities()
+    {
+        return $this->hasMany(LessonPartTeacherActivity::class);
+    }
+    public function lessonPartEvaluation()
+    {
+        return $this->hasMany(LessonPartEvaluation::class);
+    }
 }

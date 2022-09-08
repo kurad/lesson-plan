@@ -14,6 +14,10 @@ class LessonPartCompetence extends Model
     protected $fillable = [
         'content',
         'lesson_id',
-        
+
     ];
+    public function lesson()
+    {
+        return $this->belongsTo(Lesson::class);
+    }
 }
