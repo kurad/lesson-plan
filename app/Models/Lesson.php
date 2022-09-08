@@ -24,4 +24,9 @@ class Lesson extends Model
         'description_of_teaching',
         'reference',
     ];
+
+    public function unit()
+    {
+        return $this->belongsTo(Unit::class);
+    }
 }
