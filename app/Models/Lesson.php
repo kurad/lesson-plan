@@ -29,4 +29,9 @@ class Lesson extends Model
     {
         return $this->belongsTo(Unit::class);
     }
+
+    public function lessonParts()
+    {
+        return $this->hasMany(LessonPart::class);
+    }
 }

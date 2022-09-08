@@ -17,4 +17,8 @@ class ClassSetup extends Model
         'learner_with_SEN',
         'location',
     ];
+    public function subjects()
+    {
+        return $this->hasMany(Subject::class);
+    }
 }
