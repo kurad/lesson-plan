@@ -12,11 +12,11 @@ class LessonPartTeacherActivity extends Model
     use SoftDeletes;
     protected $fillable = [
         'content',
-        'lesson_id',
-
+        'lesson_part_id',
     ];
-    public function lesson()
+
+    public function lessonPart()
     {
-        return $this->belongsTo(Lesson::class);
+        return $this->belongsTo(LessonPart::class);
     }
 }

@@ -16,8 +16,8 @@ class CreateLessonPartLearnerActivitiesTable extends Migration
         Schema::create('lesson_part_learner_activities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('content');
-            $table->integer('lesson_id')->unsigned();
-            $table->foreign('lesson_id')->references('id')->on('lessons')->onDelete('restrict')->onUpdate('cascade');
+            $table->integer('lesson_part_id')->unsigned();
+            $table->foreign('lesson_part_id')->references('id')->on('lesson_parts')->onDelete('restrict')->onUpdate('cascade');
             $table->softDeletesTz();
             $table->timestamps();
         });

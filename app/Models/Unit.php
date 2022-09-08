@@ -18,10 +18,18 @@ class Unit extends Model
         'subject_id',
 
     ];
+
     public function lessons()
     {
         return $this->hasMany(Lesson::class);
     }
+
+
+    public function latestLesson()
+    {
+        return $this->hasOne(Lesson::class)->latestOfMany();
+    }
+
     public function subject()
     {
         return $this->belongsTo(Subject::class);
