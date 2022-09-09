@@ -5,6 +5,7 @@ use App\Http\Controllers\DepartmentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\UserTypeController;
 use App\Models\UserType;
@@ -55,5 +56,15 @@ Route::prefix("/v1")->group(function () {
         Route::get("{id}", [ClassSetupController::class, "show"])->whereNumber("id"); // get department details
         Route::put("{id}", [ClassSetupController::class, "update"])->whereNumber("id"); // update department details
         Route::delete("{id}", [ClassSetupController::class, "destroy"])->whereNumber("id"); // delete department
+    });
+
+    Route::prefix("subject-management")->group(function () {
+
+        Route::get("", [SubjectController::class, "index"]); // get all department
+        Route::post("", [SubjectController::class, "store"]); // create user
+        Route::get("{id}", [SubjectController::class, "show"])->whereNumber("id"); // get department details
+        Route::get("user/{id}", [SubjectController::class, "userSubjects"])->whereNumber("id"); // get user's subjects
+        Route::put("{id}", [SubjectController::class, "update"])->whereNumber("id"); // update department details
+        Route::delete("{id}", [SubjectController::class, "destroy"])->whereNumber("id"); // delete department
     });
 });
