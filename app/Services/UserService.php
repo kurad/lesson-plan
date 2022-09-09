@@ -28,6 +28,7 @@ class UserService extends AbstractService
         $typeId = $data->userTypeId;
         $email = $data->email;
         $phoneNumber = $data->phoneNumber;
+        $password = bcrypt($data->password);
 
 
         $emailExists = User::where("email", $email)->exists();
@@ -60,6 +61,7 @@ class UserService extends AbstractService
                 "l_name" => $l_name,
                 "phone" => $phoneNumber,
                 "email" => $email,
+                "password" => $password,
             ]);
 
             return $user;

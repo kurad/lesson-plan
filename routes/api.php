@@ -1,20 +1,12 @@
 <?php
 
+use App\Http\Controllers\DepartmentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\UserManagementController;
 use App\Models\UserType;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -25,8 +17,23 @@ Route::middleware('api')->group(function () {
 });
 
 
-Route::get("/test", function () {
-    $tableName = (new UserType())->getTable();
+Route::prefix("/v1")->group(function () {
 
-    return $tableName;
+    Route::prefix("user-management")->group(function () {
+
+        Route::get("", [UserManagementController::class, "allUsers"]); // get all users
+        Route::post("", [UserManagementController::class, "create"]); // create user
+        Route::get("{id}", [UserManagementController::class, "getUser"])->whereNumber("id"); // get user details
+        Route::put("{id}", [UserManagementController::class, "updateUser"])->whereNumber("id"); // update user details
+        Route::delete("{id}", [UserManagementController::class, "destroyUser"])->whereNumber("id"); // delete user
+    });
+
+    Route::prefix("departments")->group(function () {
+
+        Route::get("", [DepartmentController::class, "departments"]); // get all department
+        Route::post("", [DepartmentController::class, "create"]); // create user
+        Route::get("{id}", [DepartmentController::class, "getDepartment"])->whereNumber("id"); // get department details
+        Route::put("{id}", [DepartmentController::class, "updateDepartement"])->whereNumber("id"); // update department details
+        Route::delete("{id}", [DepartmentController::class, "destroyDepartment"])->whereNumber("id"); // delete department
+    });
 });
