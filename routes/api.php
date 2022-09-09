@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClassSetupController;
 use App\Http\Controllers\DepartmentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -45,5 +46,14 @@ Route::prefix("/v1")->group(function () {
         Route::get("{id}", [UserTypeController::class, "show"])->whereNumber("id"); // get department details
         Route::put("{id}", [UserTypeController::class, "update"])->whereNumber("id"); // update department details
         Route::delete("{id}", [UserTypeController::class, "destroy"])->whereNumber("id"); // delete department
+    });
+
+    Route::prefix("class-setup")->group(function () {
+
+        Route::get("", [ClassSetupController::class, "index"]); // get all department
+        Route::post("", [ClassSetupController::class, "store"]); // create user
+        Route::get("{id}", [ClassSetupController::class, "show"])->whereNumber("id"); // get department details
+        Route::put("{id}", [ClassSetupController::class, "update"])->whereNumber("id"); // update department details
+        Route::delete("{id}", [ClassSetupController::class, "destroy"])->whereNumber("id"); // delete department
     });
 });
