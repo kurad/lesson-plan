@@ -27,6 +27,16 @@ class UserManagementController extends Controller
 
     public function getUser(int $id)
     {
+        try {
+            $user = $this->userService->findOneUser($id);
+            return Response::json($user);
+        } catch (Exception $th) {
+
+            return Response::json([
+                "error" => $th->getMessage(),
+                "status" => 422
+            ], 422);
+        }
     }
 
     public function create(CreateUserRequest $request)
@@ -61,5 +71,15 @@ class UserManagementController extends Controller
 
     public function destroyUser(int $id)
     {
+        try {
+            $user = $this->userService->destroyUser($id);
+            return Response::json($user);
+        } catch (Exception $th) {
+
+            return Response::json([
+                "error" => $th->getMessage(),
+                "status" => 422
+            ], 422);
+        }
     }
 }

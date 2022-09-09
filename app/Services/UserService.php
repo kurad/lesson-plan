@@ -114,7 +114,6 @@ class UserService extends AbstractService
         }
 
 
-
         $f_name = $data->firstName;
         $l_name = $data->lastName;
         $departmentId = $data->departmentId;

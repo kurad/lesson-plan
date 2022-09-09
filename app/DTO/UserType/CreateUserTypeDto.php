@@ -9,5 +9,5 @@ class CreateUserTypeDto
     use InitializeDtoTrait;
 
 
-    public string $typeName;
+    public string $type;
 }

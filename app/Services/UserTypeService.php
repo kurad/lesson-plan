@@ -18,7 +18,7 @@ class UserTypeService extends AbstractService
     public function createUserType(CreateUserTypeDto $data): UserType
     {
 
-        $type = $data->typeName;
+        $type = $data->type;
 
 
         $userTypeExists = UserType::where("type", $type)->exists();
@@ -69,7 +69,7 @@ class UserTypeService extends AbstractService
             throw new Exception("The user type does not exist");
         }
 
-        $type = $data->typeName;
+        $type = $data->type;
 
         try {
             $userType->update([

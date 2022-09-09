@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\UserType;
 
+use App\DTO\UserType\CreateUserTypeDto;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateUserTypeRequest extends FormRequest
@@ -13,7 +14,7 @@ class CreateUserTypeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,11 @@ class CreateUserTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "type" => "required|string",
         ];
+    }
+    public function passedValidation()
+    {
+        $this->dto = new CreateUserTypeDto($this->validated());
     }
 }

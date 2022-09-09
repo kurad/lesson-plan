@@ -9,5 +9,5 @@ class UpdateUserTypeDto
     use InitializeDtoTrait;
 
 
-    public string $typeName;
+    public string $type;
 }
