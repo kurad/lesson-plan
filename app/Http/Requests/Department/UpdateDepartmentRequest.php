@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests\Department;
 
-use App\DTO\Department\CreateDepartmentDto;
+use App\DTO\Department\UpdateDepartmentDto;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateDepartmentRequest extends FormRequest
+class UpdateDepartmentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,9 +28,8 @@ class CreateDepartmentRequest extends FormRequest
             "name" => "required|string",
         ];
     }
-
     public function passedValidation()
     {
-        $this->dto = new CreateDepartmentDto($this->validated());
+        $this->dto = new UpdateDepartmentDto($this->validated());
     }
 }

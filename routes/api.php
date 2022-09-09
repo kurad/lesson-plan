@@ -33,7 +33,16 @@ Route::prefix("/v1")->group(function () {
         Route::get("", [DepartmentController::class, "departments"]); // get all department
         Route::post("", [DepartmentController::class, "create"]); // create user
         Route::get("{id}", [DepartmentController::class, "getDepartment"])->whereNumber("id"); // get department details
-        Route::put("{id}", [DepartmentController::class, "updateDepartement"])->whereNumber("id"); // update department details
+        Route::put("{id}", [DepartmentController::class, "updateDepartment"])->whereNumber("id"); // update department details
         Route::delete("{id}", [DepartmentController::class, "destroyDepartment"])->whereNumber("id"); // delete department
+    });
+
+    Route::prefix("user-type")->group(function () {
+
+        Route::get("", [UserTypeController::class, "index"]); // get all department
+        Route::post("", [UserTypeController::class, "create"]); // create user
+        Route::get("{id}", [UserTypeController::class, "show"])->whereNumber("id"); // get department details
+        Route::put("{id}", [UserTypeController::class, "update"])->whereNumber("id"); // update department details
+        Route::delete("{id}", [UserTypeController::class, "destroy"])->whereNumber("id"); // delete department
     });
 });

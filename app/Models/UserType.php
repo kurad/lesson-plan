@@ -12,7 +12,7 @@ class UserType extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'type',
+        'type'
     ];
 
     public function users()

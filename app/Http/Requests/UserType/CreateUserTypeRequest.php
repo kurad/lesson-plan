@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Department;
+namespace App\Http\Requests\UserType;
 
-use App\DTO\Department\CreateDepartmentDto;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateDepartmentRequest extends FormRequest
+class CreateUserTypeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +13,7 @@ class CreateDepartmentRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -25,12 +24,7 @@ class CreateDepartmentRequest extends FormRequest
     public function rules()
     {
         return [
-            "name" => "required|string",
+            //
         ];
-    }
-
-    public function passedValidation()
-    {
-        $this->dto = new CreateDepartmentDto($this->validated());
     }
 }

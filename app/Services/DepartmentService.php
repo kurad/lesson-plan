@@ -12,8 +12,6 @@ use Illuminate\Support\Facades\Log;
 class DepartmentService extends AbstractService
 {
 
-
-
     /**
      * @throws Exception
      */
@@ -77,13 +75,12 @@ class DepartmentService extends AbstractService
         try {
             $department->update([
                 "name" => $name,
-
             ]);
 
             return $department;
         } catch (Exception $th) {
 
-            Log::error("Failed to update departement ", [
+            Log::error("Failed to update department ", [
                 "message" => $th->getMessage(),
                 "function" => __FUNCTION__,
                 "class" => __CLASS__,
@@ -92,7 +89,7 @@ class DepartmentService extends AbstractService
             throw new Exception("Sorry, there were some issues, contact the system admin");
         }
     }
-    public function destroyDepartement(int $id): bool
+    public function destroyDepartment(int $id): bool
     {
         $department = Department::find($id);
         if (is_null($department)) {

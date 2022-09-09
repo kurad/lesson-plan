@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\User\CreateUserRequest;
+use App\Http\Requests\User\UpdateUserRequest;
 use App\Services\UserService;
 use Exception;
 use Illuminate\Http\Request;
@@ -43,8 +44,19 @@ class UserManagementController extends Controller
         }
     }
 
-    public function updateUser(Request $request)
+    public function updateUser(UpdateUserRequest $request, int $id)
     {
+        try {
+
+            $user = $this->userService->updateUser($request->dto, $id);
+            return Response::json($user);
+        } catch (Exception $th) {
+
+            return Response::json([
+                "error" => $th->getMessage(),
+                "status" => 422
+            ], 422);
+        }
     }
 
     public function destroyUser(int $id)
