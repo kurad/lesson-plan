@@ -68,8 +68,8 @@ class SubjectController extends Controller
     public function update(UpdateSubjectRequest $request, int $id)
     {
         try {
-            $class = $this->subjectService->updateSubject($request->dto, $id);
-            return Response::json($class);
+            $subject = $this->subjectService->updateSubject($request->dto, $id);
+            return Response::json($subject);
         } catch (Exception $th) {
 
             return Response::json([
@@ -82,8 +82,8 @@ class SubjectController extends Controller
     public function destroy(int $id)
     {
         try {
-            $class = $this->subjectService->destroySubject($id);
-            return Response::json($class);
+            $subject = $this->subjectService->destroySubject($id);
+            return Response::json($subject);
         } catch (Exception $th) {
 
             return Response::json([

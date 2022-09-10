@@ -44,7 +44,7 @@ class SubjectService extends AbstractService
 
         $user = User::find($userId);
         if (is_null($user)) {
-            throw new ItemNotFoundException("The user does not exist");
+            throw new ItemNotFoundException("The Subject does not exist");
         }
 
 

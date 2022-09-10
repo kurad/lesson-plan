@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\UnitController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\UserTypeController;
 use App\Models\UserType;
@@ -66,5 +67,15 @@ Route::prefix("/v1")->group(function () {
         Route::get("user/{id}", [SubjectController::class, "userSubjects"])->whereNumber("id"); // get user's subjects
         Route::put("{id}", [SubjectController::class, "update"])->whereNumber("id"); // update department details
         Route::delete("{id}", [SubjectController::class, "destroy"])->whereNumber("id"); // delete department
+    });
+
+    Route::prefix("unit-management")->group(function () {
+
+        Route::get("", [UnitController::class, "index"]); // get all department
+        Route::post("", [UnitController::class, "store"]); // create user
+        Route::get("{id}", [UnitController::class, "show"])->whereNumber("id"); // get department details
+        Route::get("subject/{id}", [UnitController::class, "subjectsUnit"])->whereNumber("id"); // get subject's units
+        Route::put("{id}", [UnitController::class, "update"])->whereNumber("id"); // update department details
+        Route::delete("{id}", [UnitController::class, "destroy"])->whereNumber("id"); // delete department
     });
 });
