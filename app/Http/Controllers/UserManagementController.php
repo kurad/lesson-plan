@@ -39,6 +39,20 @@ class UserManagementController extends Controller
         }
     }
 
+    public function getUserDepartment(int $id)
+    {
+        try {
+            $user = $this->userService->findUserDepartment($id);
+            return Response::json($user);
+        } catch (Exception $th) {
+
+            return Response::json([
+                "error" => $th->getMessage(),
+                "status" => 422
+            ], 422);
+        }
+    }
+
     public function create(CreateUserRequest $request)
     {
         try {

@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\DTO\Login\LoginDto;
+use App\DTO\Auth\LoginDto;
 
 class LoginFormRequest extends FormRequest
 {

@@ -32,6 +32,7 @@ Route::prefix("/v1")->group(function () {
         Route::get("", [UserManagementController::class, "allUsers"]); // get all users
         Route::post("", [UserManagementController::class, "create"]); // create user
         Route::get("{id}", [UserManagementController::class, "getUser"])->whereNumber("id"); // get user details
+        Route::get("department/{id}", [UserManagementController::class, "getUserDepartment"])->whereNumber("id"); // get user details
         Route::put("{id}", [UserManagementController::class, "updateUser"])->whereNumber("id"); // update user details
         Route::delete("{id}", [UserManagementController::class, "destroyUser"])->whereNumber("id"); // delete user
     });

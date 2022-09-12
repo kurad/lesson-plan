@@ -85,6 +85,15 @@ class UserService extends AbstractService
         return $user;
     }
 
+    public function findUserDepartment(int $id): ?User
+    {
+        $user = User::with("department", "usertype")->find($id);
+        if (is_null($user)) {
+            throw new Exception("Sorry, user can not be found");
+        }
+        return $user;
+    }
+
     public function allUsers(): Collection
     {
         $users = User::all();

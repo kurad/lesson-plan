@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DTO\Login;
+namespace App\DTO\Auth;
 
 use App\DTO\InitializeDtoTrait;
 
