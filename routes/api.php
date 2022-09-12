@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ClassSetupController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\LessonController;
+use App\Http\Controllers\LessonPartController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LevelController;
@@ -9,7 +11,6 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\UserTypeController;
-use App\Models\UserType;
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -77,5 +78,24 @@ Route::prefix("/v1")->group(function () {
         Route::get("subject/{id}", [UnitController::class, "subjectsUnit"])->whereNumber("id"); // get subject's units
         Route::put("{id}", [UnitController::class, "update"])->whereNumber("id"); // update department details
         Route::delete("{id}", [UnitController::class, "destroy"])->whereNumber("id"); // delete department
+    });
+
+    Route::prefix("lesson-management")->group(function () {
+
+        Route::get("", [LessonController::class, "index"]); // get all lessons
+        Route::post("", [LessonController::class, "store"]); // create new lesson
+        Route::get("{id}", [LessonController::class, "show"])->whereNumber("id"); // get lesson details
+        Route::get("subject/{id}", [LessonController::class, "lessonsPerUnit"])->whereNumber("id"); // get unit's lessons
+        Route::put("{id}", [LessonController::class, "update"])->whereNumber("id"); // update lesson details
+        Route::delete("{id}", [LessonController::class, "destroy"])->whereNumber("id"); // delete lesson
+    });
+
+    Route::prefix("lesson-parts")->group(function () {
+
+        Route::get("", [LessonPartController::class, "index"]); // get all lessons
+        Route::post("", [LessonPartController::class, "store"]); // create new lesson
+        Route::get("{id}", [LessonPartController::class, "show"])->whereNumber("id"); // get lesson details
+        Route::put("{id}", [LessonPartController::class, "update"])->whereNumber("id"); // update lesson details
+        Route::delete("{id}", [LessonPartController::class, "destroy"])->whereNumber("id"); // delete lesson
     });
 });

@@ -2,9 +2,94 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Lesson\CreateLessonRequest;
+use App\Http\Requests\Lesson\UpdateLessonRequest;
+use App\Services\LessonService;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class LessonController extends Controller
 {
-    //
+    public function __construct(public LessonService $lessonService)
+    {
+    }
+
+    public function index()
+    {
+        $result = $this->lessonService->allLessons()->toArray();
+
+        return Response::json($result);
+    }
+
+    public function store(CreateLessonRequest $request)
+    {
+        try {
+
+            $lesson = $this->lessonService->createLesson($request->dto);
+            return Response::json($lesson);
+        } catch (Exception $th) {
+
+            return Response::json([
+                "error" => $th->getMessage(),
+                "status" => 422
+            ], 422);
+        }
+    }
+
+    public function show(int $id)
+    {
+        try {
+            $lesson = $this->lessonService->getLesson($id);
+            return Response::json($lesson);
+        } catch (Exception $th) {
+
+            return Response::json([
+                "error" => $th->getMessage(),
+                "status" => 422
+            ], 422);
+        }
+    }
+
+    public function lessonsPerUnit(int $id)
+    {
+        try {
+            $lessons = $this->lessonService->lessonsPerUnit($id);
+            return Response::json($lessons);
+        } catch (Exception $th) {
+
+            return Response::json([
+                "error" => $th->getMessage(),
+                "status" => 422
+            ], 422);
+        }
+    }
+
+    public function update(UpdateLessonRequest $request, int $id)
+    {
+        try {
+            $lesson = $this->lessonService->updateLesson($request->dto, $id);
+            return Response::json($lesson);
+        } catch (Exception $th) {
+
+            return Response::json([
+                "error" => $th->getMessage(),
+                "status" => 422
+            ], 422);
+        }
+    }
+
+    public function destroy(int $id)
+    {
+        try {
+            $lesson = $this->lessonService->destroyLesson($id);
+            return Response::json($lesson);
+        } catch (Exception $th) {
+
+            return Response::json([
+                "error" => $th->getMessage(),
+                "status" => 422
+            ], 422);
+        }
+    }
 }
