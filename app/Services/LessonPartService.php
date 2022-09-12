@@ -38,7 +38,7 @@ class LessonPartService extends AbstractService
             $lessonPart = LessonPart::create([
                 "type" => $ytpe,
                 "duration" => $duration,
-                "lessonId" => $lessonId,
+                "lesson_id" => $lessonId,
 
             ]);
 
@@ -92,7 +92,7 @@ class LessonPartService extends AbstractService
             $lessonPart->update([
                 "type" => $ytpe,
                 "duration" => $duration,
-                "lessonId" => $lessonId,
+                "lesson_id" => $lessonId,
             ]);
 
             return $lessonPart;

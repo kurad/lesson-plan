@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use App\DTO\LessonParts\UpdateLessonPartDto;
 use App\Http\Requests\LessonPart\CreateLessonPartRequest;
-use App\Models\LessonPart;
 use App\Services\LessonPartService;
 use Exception;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
 class LessonPartController extends Controller
