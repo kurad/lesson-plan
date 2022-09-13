@@ -45,16 +45,18 @@ class AuthController extends Controller
 
         $allPermissions = config("permissions");
 
-        dd($allPermissions);
+        // dd($allPermissions);
 
         $userPermissions = [];
 
         if ($user->user_type_id == 1) {
 
             $userPermissions = $allPermissions["teacher"];
-        } else {
+        } else if ($user->user_type_id == 2) {
 
             $userPermissions = $allPermissions["hod"];
+        } else {
+            $userPermissions = $allPermissions["admin"];
         }
 
         $token = $user->createToken('auth_token', $userPermissions)->plainTextToken;
