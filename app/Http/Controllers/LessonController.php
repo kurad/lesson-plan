@@ -34,6 +34,12 @@ class LessonController extends Controller
 
     public function store(CreateLessonRequest $request)
     {
+        /** @var User */
+        $user = request()->user();
+        if (!$user->tokenCan("lessons:create")) {
+            throw new ActionIsForbiddenException();
+        }
+
         try {
 
             $lesson = $this->lessonService->createLesson($request->dto);

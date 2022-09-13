@@ -18,8 +18,8 @@ class CreateLessonDto
     public string $instructions;
     public string $knowledge;
     public string $skills;
-    public string $attitudeValues;
+    public string $attitudes;
     public string $description;
-    public string $teachingMaterial;
+    public string $materials;
     public string $reference;
 }

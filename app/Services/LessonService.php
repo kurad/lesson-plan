@@ -26,14 +26,14 @@ class LessonService extends AbstractService
 
         $title = $data->title;
         $unitId = $data->unitId;
-        $topic_area = $data->topicArea;
+        $topicArea = $data->topicArea;
         $duration = $data->duration;
         $date =  $data->lessonDate;
         $instructions = $data->instructions;
         $knowledge = $data->knowledge;
         $skills = $data->skills;
-        $attitudes = $data->attitudeValues;
-        $materials = $data->teachingMaterial;
+        $attitudes = $data->attitudes;
+        $materials = $data->materials;
         $description = $data->description;
         $reference = $data->reference;
 
@@ -46,7 +46,7 @@ class LessonService extends AbstractService
             $lesson = Lesson::create([
                 "title" => $title,
                 "unit_id" => $unitId,
-                "topic_area" => $topic_area,
+                "topic_area" => $topicArea,
                 "duration" => $duration,
                 "date" => $date,
                 "instructional_objective" => $instructions,

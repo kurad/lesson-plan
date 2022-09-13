@@ -46,7 +46,7 @@ return [
         "lessons:delete",
         "lessons:edit",
         "lessons:update",
-        
+
         "competence:create",
         "competence:details",
         "competence:all",
@@ -81,5 +81,5 @@ return [
         "comment:delete",
     ],
 
-    "admin" =>["*"]
+    "admin" => ["*"]
 ];

@@ -27,7 +27,7 @@ class CreateLessonRequest extends FormRequest
         return [
             "title" => "required|string",
             "unitId" => "required|integer",
-            "topic_area" => "required|string",
+            "topicArea" => "required|string",
             "duration" => "required|integer",
             "lessonDate" => "required|string",
             "instructions" => "nullable|string",
