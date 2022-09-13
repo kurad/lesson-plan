@@ -1,14 +1,14 @@
 <?php
 
-namespace App\DTO\LessonTeacherActivities;
+namespace App\DTO\LessonStudentActivities;
 
 use App\DTO\InitializeDtoTrait;
 
-class CreateLessonTeacherActivitiesDto
+class CreateLessonStudentActivitiesDto
 {
     use InitializeDtoTrait;
 
 
     public string $content;
-    public int $lessonTypeId;
+    public int $lessonPartId;
 }

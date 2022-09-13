@@ -4,9 +4,11 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClassSetupController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\LessonController;
+use App\Http\Controllers\LessonPartCompetenceController;
 use App\Http\Controllers\LessonPartController;
 use App\Http\Controllers\LessonPartEvaluationController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\LessonPartLearnerActivityController;
+use App\Http\Controllers\LessonPartTeacherActivityController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UnitController;
@@ -109,6 +111,35 @@ Route::prefix("/v1")->group(function () {
         Route::put("{id}", [LessonPartEvaluationController::class, "update"])->whereNumber("id"); // update lesson part details
         Route::delete("{id}", [LessonPartEvaluationController::class, "destroy"])->whereNumber("id"); // delete lesson
     });
+
+    Route::prefix("lesson-competence")->group(function () {
+
+        Route::get("", [LessonPartCompetenceController::class, "index"]); // get all lessons
+        Route::post("", [LessonPartCompetenceController::class, "store"]); // create new lesson evaluation
+        Route::get("{id}", [LessonPartCompetenceController::class, "show"])->whereNumber("id"); // get lesson details
+        Route::put("{id}", [LessonPartCompetenceController::class, "update"])->whereNumber("id"); // update lesson part details
+        Route::delete("{id}", [LessonPartCompetenceController::class, "destroy"])->whereNumber("id"); // delete lesson
+    });
+
+    Route::prefix("teacher")->group(function () {
+
+        Route::get("", [LessonPartTeacherActivityController::class, "index"]); // get all lessons
+        Route::post("", [LessonPartTeacherActivityController::class, "store"]); // create new lesson evaluation
+        Route::get("{id}", [LessonPartTeacherActivityController::class, "show"])->whereNumber("id"); // get lesson details
+        Route::put("{id}", [LessonPartTeacherActivityController::class, "update"])->whereNumber("id"); // update lesson part details
+        Route::delete("{id}", [LessonPartTeacherActivityController::class, "destroy"])->whereNumber("id"); // delete lesson
+    });
+
+    Route::prefix("learner")->group(function () {
+
+        Route::get("", [LessonPartLearnerActivityController::class, "index"]); // get all lessons
+        Route::post("", [LessonPartLearnerActivityController::class, "store"]); // create new lesson evaluation
+        Route::get("{id}", [LessonPartLearnerActivityController::class, "show"])->whereNumber("id"); // get lesson details
+        Route::put("{id}", [LessonPartLearnerActivityController::class, "update"])->whereNumber("id"); // update lesson part details
+        Route::delete("{id}", [LessonPartLearnerActivityController::class, "destroy"])->whereNumber("id"); // delete lesson
+    });
+
+
 
     Route::group(['middleware' => ['auth:sanctum']], function () {
     });

@@ -29,7 +29,6 @@ class UpdateProfileFormRequest extends FormRequest
             "firstName" => "required|string",
             "lastName" => "required|string",
             "departmentId" => "required|integer",
-            "userTypeId" => "required|integer",
             "email" => "required|string|email",
             "phoneNumber" => "nullable|string",
             "password" => "required|string|min:6",

@@ -3,12 +3,12 @@
 namespace App\Services;
 
 use App\DTO\LessonCompetence\CreateLessonCompetenceDto;
+use App\DTO\LessonCompetence\UpdateLessonCompetenceDto;
 use App\Exceptions\InvalidDataGivenException;
 use App\Exceptions\ItemNotFoundException;
 use App\Exceptions\UknownException;
 use App\Models\LessonPart;
 use App\Models\LessonPartCompetence;
-use App\Models\LessonPartEvaluation;
 use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Log;
@@ -28,13 +28,13 @@ class LessonCompetenceService extends AbstractService
         $lessonPartId = $data->lessonPartId;
 
 
-        $lesson = LessonPartEvaluation::find($lessonPartId);
+        $lesson = LessonPart::find($lessonPartId);
         if (is_null($lesson)) {
             throw new ItemNotFoundException("There is no such lesson part found");
         }
 
         try {
-            $lesson = LessonPartEvaluation::create([
+            $lesson = LessonPartCompetence::create([
                 "content" => $content,
                 "lesson_part_id" => $lessonPartId,
 
@@ -42,7 +42,7 @@ class LessonCompetenceService extends AbstractService
 
             return $lesson;
         } catch (Exception $th) {
-            Log::error("Failed to create a lesson Evaluation ", [
+            Log::error("Failed to create a lesson Competence part ", [
                 "message" => $th->getMessage(),
                 "function" => __FUNCTION__,
                 "class" => __CLASS__,
@@ -52,48 +52,46 @@ class LessonCompetenceService extends AbstractService
         }
     }
 
-    public function getLessonEvaluation(int $id): ?LessonPartEvaluation
+    public function getLessonCompetence(int $id): ?LessonPartCompetence
     {
-        $evaluation = LessonPartEvaluation::find($id);
-        if (is_null($evaluation)) {
+        $lesson = LessonPartCompetence::find($id);
+        if (is_null($lesson)) {
             throw new ItemNotFoundException("Sorry, lesson part can not be found");
         }
-        return $evaluation;
+        return $lesson;
     }
 
-    public function allEvaluation(): Collection
+    public function allCompetence(): Collection
     {
-        $evaluations = LessonPartEvaluation::all();
+        $lesson = LessonPartCompetence::all();
 
-        return $evaluations;
+        return $lesson;
     }
 
-    public function evaluationPerLesson(int $lessonId): Collection
+    public function competencePerLesson(int $lessonId): Collection
     {
-        $evaluation = LessonPartEvaluation::join('lesson_parts', 'lesson_parts.id', '=', 'lesson_part_evaluations.lesson_part_id')
-            ->join('lessons', 'lessons.id', '=', 'lesson_parts.lesson_id')
-            ->where("lesson_id", "=", $lessonId)->get();
-        return $evaluation;
+        $lesson = LessonPartCompetence::with('lessonPart')->find($lessonId);
+        return $lesson;
     }
 
 
-    public function updateLessonEvaluation(UpdateLessonEvaluationDto $data, int $id): LessonPartEvaluation
+    public function updateLessonCompetence(UpdateLessonCompetenceDto $data, int $id): LessonPartCompetence
     {
-        $evaluation = LessonPartEvaluation::find($id);
-        if (is_null($evaluation)) {
-            throw new InvalidDataGivenException("The lesson evaluation does not exist");
+        $lesson = LessonPartCompetence::find($id);
+        if (is_null($lesson)) {
+            throw new InvalidDataGivenException("The lesson Competence does not exist");
         }
 
-        $content = $data->type;
+        $content = $data->content;
         $lessonPartId = $data->lessonPartId;
 
         try {
-            $evaluation->update([
+            $lesson->update([
                 "content" => $content,
                 "lesson_part_id" => $lessonPartId,
             ]);
 
-            return $evaluation;
+            return $lesson;
         } catch (Exception $th) {
 
             Log::error("Failed to update lesson part ", [
@@ -106,13 +104,13 @@ class LessonCompetenceService extends AbstractService
         }
     }
 
-    public function destroyLessonEvaluation(int $id): bool
+    public function destroyLessonCompetence(int $id): bool
     {
-        $evaluation = LessonPartEvaluation::find($id);
-        if (is_null($evaluation)) {
+        $lesson = LessonPartCompetence::find($id);
+        if (is_null($lesson)) {
             throw new InvalidDataGivenException("The lesson Part does not exist");
         }
 
-        return $evaluation->delete();
+        return $lesson->delete();
     }
 }

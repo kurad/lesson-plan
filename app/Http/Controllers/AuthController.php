@@ -12,20 +12,22 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Auth;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Validator;
 
 class AuthController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware("auth:sanctum")->except(["login", "register"]);
+    }
+
     public function login(LoginFormRequest $request)
     {
         $email = $request->dto->email;
         $password = $request->dto->password;
 
-        if (!Auth::attempt($request->only('email', 'password'))) {
-            return response()
-                ->json(['message' => 'Access denied'], 401);
-        }
-
+        /** @var User */
         $user = User::where('email', $request['email'])->first();
 
         if (is_null($user)) {
@@ -41,8 +43,21 @@ class AuthController extends Controller
             ], 401);
         }
 
+        $allPermissions = config("permissions");
 
-        $token = $user->createToken('auth_token')->plainTextToken;
+        dd($allPermissions);
+
+        $userPermissions = [];
+
+        if ($user->user_type_id == 1) {
+
+            $userPermissions = $allPermissions["teacher"];
+        } else {
+
+            $userPermissions = $allPermissions["hod"];
+        }
+
+        $token = $user->createToken('auth_token', $userPermissions)->plainTextToken;
 
 
         return response()->json([
@@ -86,7 +101,7 @@ class AuthController extends Controller
 
     public function getLoggedUser(Request $request)
     {
-        $user = Auth::user();
+        $user = $request->user();
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
@@ -97,19 +112,17 @@ class AuthController extends Controller
     }
     public function profile()
     {
-        $user = auth('sanctum')->user();
-        $token = $user->createToken('auth_token')->plainTextToken;
+        $user = request()->user();
+
 
         return response()->json([
-            'user' => $user->only(["email"]),
-            'access_token' => $token,
-            'token_type' => 'Bearer',
+            "data" => $user
         ]);
     }
 
-    public function updateProfile(UpdateProfileFormRequest $request, int $id): User
+    public function updateProfile(UpdateProfileFormRequest $request): User
     {
-        $user = User::find($id);
+        $user = request()->user();
         if (is_null($user)) {
             throw new Exception("The user does not exist");
         }
@@ -117,7 +130,6 @@ class AuthController extends Controller
         $firstName = $request->dto->firstName;
         $lastName = $request->dto->lastName;
         $departmentId = $request->dto->departmentId;
-        $userTypeId = $request->dto->userTypeId;
         $phoneNumber = $request->dto->phoneNumber;
         $email = $request->dto->email;
         $password = bcrypt($request->dto->password);
@@ -125,7 +137,6 @@ class AuthController extends Controller
         try {
             $user->update([
                 "department_id" => $departmentId,
-                "user_type_id" => $userTypeId,
                 "f_name" => $firstName,
                 "l_name" => $lastName,
                 "phone" => $phoneNumber,

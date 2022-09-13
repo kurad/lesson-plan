@@ -10,5 +10,5 @@ class UpdateLessonStudentActivitiesDto
 
 
     public string $content;
-    public int $lessonTypeId;
+    public int $lessonPartId;
 }

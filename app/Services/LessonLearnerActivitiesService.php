@@ -2,21 +2,19 @@
 
 namespace App\Services;
 
-use App\DTO\LessonEvaluation\CreateLessonEvaluationDto;
-use App\DTO\LessonEvaluation\UpdateLessonEvaluationDto;
-use App\DTO\LessonParts\CreateLessonPartDto;
-use App\DTO\LessonParts\UpdateLessonPartDto;
+
+use App\DTO\LessonStudentActivities\CreateLessonStudentActivitiesDto;
+use App\DTO\LessonStudentActivities\UpdateLessonStudentActivitiesDto;
 use App\Exceptions\InvalidDataGivenException;
 use App\Exceptions\ItemNotFoundException;
 use App\Exceptions\UknownException;
-use App\Models\Lesson;
 use App\Models\LessonPart;
-use App\Models\LessonPartEvaluation;
+use App\Models\LessonPartLearnerActivity;
 use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Log;
 
-class LessonEvaluationService extends AbstractService
+class LessonLearnerActivitiesService extends AbstractService
 {
 
 
@@ -24,7 +22,7 @@ class LessonEvaluationService extends AbstractService
     /**
      * @throws Exception
      */
-    public function createLessonEvaluation(CreateLessonEvaluationDto $data): LessonPartEvaluation
+    public function createLearnerActivity(CreateLessonStudentActivitiesDto $data): LessonPartLearnerActivity
     {
 
         $content = $data->content;
@@ -37,7 +35,7 @@ class LessonEvaluationService extends AbstractService
         }
 
         try {
-            $lesson = LessonPartEvaluation::create([
+            $lesson = LessonPartLearnerActivity::create([
                 "content" => $content,
                 "lesson_part_id" => $lessonPartId,
 
@@ -45,7 +43,7 @@ class LessonEvaluationService extends AbstractService
 
             return $lesson;
         } catch (Exception $th) {
-            Log::error("Failed to create a lesson Evaluation ", [
+            Log::error("Failed to create a lesson Learner Activity part ", [
                 "message" => $th->getMessage(),
                 "function" => __FUNCTION__,
                 "class" => __CLASS__,
@@ -55,48 +53,47 @@ class LessonEvaluationService extends AbstractService
         }
     }
 
-    public function getLessonEvaluation(int $id): ?LessonPartEvaluation
+    public function getLearnerActivity(int $id): ?LessonPartLearnerActivity
     {
-        $evaluation = LessonPartEvaluation::find($id);
-        if (is_null($evaluation)) {
+        $lesson = LessonPartLearnerActivity::find($id);
+        if (is_null($lesson)) {
             throw new ItemNotFoundException("Sorry, lesson part can not be found");
         }
-        return $evaluation;
+        return $lesson;
     }
 
-    public function allEvaluation(): Collection
+    public function allLearnerActivities(): Collection
     {
-        $evaluations = LessonPartEvaluation::all();
 
-        return $evaluations;
+        $activities = LessonPartLearnerActivity::all();
+
+        return $activities;
     }
 
-    public function evaluationPerLesson(int $lessonId): Collection
+    public function LearnerActivityPerLesson(int $lessonId): Collection
     {
-        $evaluation = LessonPartEvaluation::join('lesson_parts', 'lesson_parts.id', '=', 'lesson_part_evaluations.lesson_part_id')
-            ->join('lessons', 'lessons.id', '=', 'lesson_parts.lesson_id')
-            ->where("lesson_id", "=", $lessonId)->get();
-        return $evaluation;
+        $lesson = LessonPartLearnerActivity::with('lessonPart')->find($lessonId);
+        return $lesson;
     }
 
 
-    public function updateLessonEvaluation(UpdateLessonEvaluationDto $data, int $id): LessonPartEvaluation
+    public function updateLearnerActivity(UpdateLessonStudentActivitiesDto $data, int $id): LessonPartLearnerActivity
     {
-        $evaluation = LessonPartEvaluation::find($id);
-        if (is_null($evaluation)) {
-            throw new InvalidDataGivenException("The lesson evaluation does not exist");
+        $lesson = LessonPartLearnerActivity::find($id);
+        if (is_null($lesson)) {
+            throw new InvalidDataGivenException("The lesson Learner Activity does not exist");
         }
 
         $content = $data->content;
-        $lessonPartId = $data->lessonTypeId;
+        $lessonPartId = $data->lessonPartId;
 
         try {
-            $evaluation->update([
+            $lesson->update([
                 "content" => $content,
                 "lesson_part_id" => $lessonPartId,
             ]);
 
-            return $evaluation;
+            return $lesson;
         } catch (Exception $th) {
 
             Log::error("Failed to update lesson part ", [
@@ -109,13 +106,13 @@ class LessonEvaluationService extends AbstractService
         }
     }
 
-    public function destroyLessonEvaluation(int $id): bool
+    public function destroyLearnerActivity(int $id): bool
     {
-        $evaluation = LessonPartEvaluation::find($id);
-        if (is_null($evaluation)) {
+        $lesson = LessonPartLearnerActivity::find($id);
+        if (is_null($lesson)) {
             throw new InvalidDataGivenException("The lesson Part does not exist");
         }
 
-        return $evaluation->delete();
+        return $lesson->delete();
     }
 }

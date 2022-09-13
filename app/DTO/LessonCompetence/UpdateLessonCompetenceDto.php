@@ -4,11 +4,11 @@ namespace App\DTO\LessonCompetence;
 
 use App\DTO\InitializeDtoTrait;
 
-class CreateLessonCompetenceDto
+class UpdateLessonCompetenceDto
 {
     use InitializeDtoTrait;
 
 
     public string $content;
-    public int $lessonTypeId;
+    public int $lessonPartId;
 }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\ActionIsForbiddenException;
 use App\Http\Requests\Lesson\CreateLessonRequest;
 use App\Http\Requests\Lesson\UpdateLessonRequest;
+use App\Models\User;
 use App\Services\LessonService;
 use Exception;
 use Illuminate\Http\Request;
@@ -13,10 +15,18 @@ class LessonController extends Controller
 {
     public function __construct(public LessonService $lessonService)
     {
+
+        $this->middleware(["auth:sanctum"]);
     }
 
     public function index()
     {
+        /** @var User */
+        $user = request()->user();
+        if (!$user->tokenCan("lessons:all")) {
+            throw new ActionIsForbiddenException();
+        }
+
         $result = $this->lessonService->allLessons()->toArray();
 
         return Response::json($result);
