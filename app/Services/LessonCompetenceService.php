@@ -2,21 +2,18 @@
 
 namespace App\Services;
 
-use App\DTO\LessonEvaluation\CreateLessonEvaluationDto;
-use App\DTO\LessonEvaluation\UpdateLessonEvaluationDto;
-use App\DTO\LessonParts\CreateLessonPartDto;
-use App\DTO\LessonParts\UpdateLessonPartDto;
+use App\DTO\LessonCompetence\CreateLessonCompetenceDto;
 use App\Exceptions\InvalidDataGivenException;
 use App\Exceptions\ItemNotFoundException;
 use App\Exceptions\UknownException;
-use App\Models\Lesson;
 use App\Models\LessonPart;
+use App\Models\LessonPartCompetence;
 use App\Models\LessonPartEvaluation;
 use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Log;
 
-class LessonEvaluationService extends AbstractService
+class LessonCompetenceService extends AbstractService
 {
 
 
@@ -24,14 +21,14 @@ class LessonEvaluationService extends AbstractService
     /**
      * @throws Exception
      */
-    public function createLessonEvaluation(CreateLessonEvaluationDto $data): LessonPartEvaluation
+    public function createLessonCompetence(CreateLessonCompetenceDto $data): LessonPartCompetence
     {
 
         $content = $data->content;
         $lessonPartId = $data->lessonPartId;
 
 
-        $lesson = LessonPart::find($lessonPartId);
+        $lesson = LessonPartEvaluation::find($lessonPartId);
         if (is_null($lesson)) {
             throw new ItemNotFoundException("There is no such lesson part found");
         }
