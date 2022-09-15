@@ -28,7 +28,6 @@ class LessonController extends Controller
         }
 
         $result = $this->lessonService->allLessons()->toArray();
-
         return Response::json($result);
     }
 

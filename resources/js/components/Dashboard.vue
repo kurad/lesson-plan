@@ -9,8 +9,8 @@
                         <div class="info-box-content">
                             <span class="info-box-text">Subjects</span>
                             <span class="info-box-number">
-                            10
-                            
+                                10
+
                             </span>
                         </div>
                         <!-- /.info-box-content -->
@@ -56,11 +56,11 @@
                             <span class="info-box-text">Teachers</span>
                             <span class="info-box-number">2,000</span>
                         </div>
-                    <!-- /.info-box-content -->
+                        <!-- /.info-box-content -->
                     </div>
                     <!-- /.info-box -->
                 </div>
-            <!-- /.col -->
+                <!-- /.col -->
             </div>
             <!-- /.row -->
 
@@ -69,7 +69,7 @@
                 <div class="col-md-8">
                     <!-- MAP & BOX PANE -->
                     <div class="card">
-                    <!-- <div class="card-header">
+                        <!-- <div class="card-header">
                         <h3 class="card-title">Latest Orders (Demo)</h3>
 
                         <div class="card-tools">
@@ -81,8 +81,8 @@
                         </button>
                         </div>
                     </div> -->
-                    <!-- /.card-header -->
-                    <!-- <div class="card-body p-0">
+                        <!-- /.card-header -->
+                        <!-- <div class="card-body p-0">
                         <div class="table-responsive">
                         <table class="table m-0">
                             <thead>
@@ -146,25 +146,26 @@
                         </table>
                         </div>
                     </div> -->
-                <!-- /.card-body -->
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                    <!-- /.card -->
                 </div>
-                <!-- /.card -->
-                <!-- /.card -->
-            </div>
-            <!-- /.col -->
+                <!-- /.col -->
 
- 
-            <!-- /.col -->
+
+                <!-- /.col -->
             </div>
             <!-- /.row -->
-        </div><!--/. container-fluid -->
+        </div>
+        <!--/. container-fluid -->
     </section>
 </template>
 
 <script>
-    export default {
-        mounted() {
-            console.log('Component mounted.')
-        }
+export default {
+    mounted() {
+        console.log('Component mounted.')
     }
+}
 </script>

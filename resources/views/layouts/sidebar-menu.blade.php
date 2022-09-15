@@ -1,36 +1,36 @@
 <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-      <li class="nav-item">
-        <router-link to="/dashboard" class="nav-link">
-          <i class="nav-icon fas fa-tachometer-alt blue"></i>
-          <p>
-            Dashboard
-          </p>
-        </router-link>
-      </li>
-
-      <li class="nav-item">
-        <router-link to="/levels" class="nav-link">
-          <i class="nav-icon fas fa-list orange"></i>
-          <p>
-            Levels
-          </p>
-        </router-link>
-      </li>
-
-      
         <li class="nav-item">
-          <router-link to="/users" class="nav-link">
-            <i class="fa fa-users nav-icon blue"></i>
-            <p>Users</p>
-          </router-link>
+            <router-link to="/dashboard" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt blue"></i>
+                <p>
+                    Dashboard
+                </p>
+            </router-link>
         </li>
-      
 
-      
+        <li class="nav-item">
+            <router-link to="/departments" class="nav-link">
+                <i class="nav-icon fas fa-list orange"></i>
+                <p>
+                    Departments
+                </p>
+            </router-link>
+        </li>
 
-      
-      <!-- <li class="nav-item has-treeview">
+
+        <li class="nav-item">
+            <router-link to="/users" class="nav-link">
+                <i class="fa fa-users nav-icon blue"></i>
+                <p>Users</p>
+            </router-link>
+        </li>
+
+
+
+
+
+        <!-- <li class="nav-item has-treeview">
         <a href="#" class="nav-link">
           <i class="nav-icon fas fa-cog green"></i>
           <p>
@@ -68,12 +68,12 @@
         </ul>
       </li> -->
 
-    
-      
-      
 
-      <li class="nav-item">
-        <!--  -->
-      </li>
+
+
+
+        <li class="nav-item">
+            <!--  -->
+        </li>
     </ul>
-  </nav>
+</nav>

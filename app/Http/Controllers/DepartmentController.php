@@ -20,9 +20,9 @@ class DepartmentController extends Controller
     public function departments()
     {
 
-        $result = $this->departmentService->allDepartments()->toArray();
+        $departments = $this->departmentService->allDepartments()->toArray();
 
-        return Response::json($result);
+        return Response::json($departments);
     }
 
     public function getDepartment(int $id)
