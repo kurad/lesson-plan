@@ -57,11 +57,11 @@ Route::prefix("/v1")->group(function () {
 
     Route::prefix("class-setup")->group(function () {
 
-        Route::get("", [ClassSetupController::class, "index"]); // get all department
-        Route::post("", [ClassSetupController::class, "store"]); // create user
-        Route::get("{id}", [ClassSetupController::class, "show"])->whereNumber("id"); // get department details
-        Route::put("{id}", [ClassSetupController::class, "update"])->whereNumber("id"); // update department details
-        Route::delete("{id}", [ClassSetupController::class, "destroy"])->whereNumber("id"); // delete department
+        Route::get("", [ClassSetupController::class, "index"]); // get all classes
+        Route::post("", [ClassSetupController::class, "store"]); // create class
+        Route::get("{id}", [ClassSetupController::class, "show"])->whereNumber("id"); // get class details
+        Route::put("{id}", [ClassSetupController::class, "update"])->whereNumber("id"); // update class details
+        Route::delete("{id}", [ClassSetupController::class, "destroy"])->whereNumber("id"); // delete class
     });
 
     Route::prefix("subject-management")->group(function () {

@@ -17,9 +17,9 @@ class UnitController extends Controller
 
     public function index()
     {
-        $result = $this->unitService->allUnits()->toArray();
+        $units = $this->unitService->allUnits()->toArray();
 
-        return Response::json($result);
+        return Response::json($units);
     }
 
     public function store(CreateUnitRequest $request)

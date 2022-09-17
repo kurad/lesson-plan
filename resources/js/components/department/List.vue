@@ -39,42 +39,6 @@
     </div>
 </template>
 
-<!-- <script>
-export default {
-    name: "result",
-    data() {
-        return {
-            departments: []
-        }
-    },
-    created() {
-        axios
-            .get('http://localhost:8000/api/v1/departments/')
-            .then(response => {
-                this.departments = response.data;
-            });
-    },
-    methods: {
-        deleteDepartment(id) {
-            axios
-                .delete(`http://localhost:8000/api/departments/${id}`)
-                .then(response => {
-                    let i = this.departments.map(data => data.id).indexOf(id);
-                    this.departments.splice(i, 1)
-                });
-        }
-    }
-
-    deleteCategory(id){
-            if(confirm("Are you sure to delete this category ?")){
-                this.axios.delete(`/api/category/${id}`).then(response=>{
-                    this.getCategories()
-                }).catch(error=>{
-                    console.log(error)
-                })
-            }
-}
-</script> -->
 
 <script>
 export default {

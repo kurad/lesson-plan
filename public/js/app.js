@@ -5432,18 +5432,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); //window.Vue = require('vue');
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
-
-window.Vue = vue__WEBPACK_IMPORTED_MODULE_0__["default"]; //import App from './App.vue';
-//import VueAxios from 'vue-axios';
-
- //import axios from 'axios';
+window.Vue = vue__WEBPACK_IMPORTED_MODULE_0__["default"];
 
 
-Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]); //Vue.use(VueAxios, axios);
-
+Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]({
   mode: 'history',
   routes: _routes__WEBPACK_IMPORTED_MODULE_1__.routes
@@ -5517,6 +5512,18 @@ var editDepartment = function editDepartment() {
   return __webpack_require__.e(/*! import() */ "resources_js_components_department_edit_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/department/edit.vue */ "./resources/js/components/department/edit.vue"));
 };
 
+var classList = function classList() {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_class-setup_ClassList_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/class-setup/ClassList.vue */ "./resources/js/components/class-setup/ClassList.vue"));
+};
+
+var createClass = function createClass() {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_class-setup_CreateClass_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/class-setup/CreateClass.vue */ "./resources/js/components/class-setup/CreateClass.vue"));
+};
+
+var unitList = function unitList() {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_units_unitList_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/units/unitList.vue */ "./resources/js/components/units/unitList.vue"));
+};
+
 var routes = [{
   name: 'dashboard',
   path: '/dashboard',
@@ -5533,6 +5540,18 @@ var routes = [{
   name: 'edit',
   path: '/edit/:id',
   component: editDepartment
+}, {
+  name: 'classList',
+  path: '/classes',
+  component: classList
+}, {
+  name: 'class.create',
+  path: '/class/create',
+  component: createClass
+}, {
+  name: 'unitList',
+  path: '/units',
+  component: unitList
 }];
 
 /***/ }),
@@ -43565,7 +43584,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_department_List_vue":1,"resources_js_components_department_create_vue":1,"resources_js_components_department_edit_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_department_List_vue":1,"resources_js_components_department_create_vue":1,"resources_js_components_department_edit_vue":1,"resources_js_components_class-setup_ClassList_vue":1,"resources_js_components_class-setup_CreateClass_vue":1,"resources_js_components_units_unitList_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

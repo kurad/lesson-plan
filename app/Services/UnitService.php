@@ -75,7 +75,7 @@ class UnitService extends AbstractService
 
     public function allUnits(): Collection
     {
-        $units = Unit::all();
+        $units = Unit::with("subject")->get();
 
         return $units;
     }

@@ -17,17 +17,17 @@ class ClassSetupController extends Controller
 
     public function index()
     {
-        $result = $this->classService->allClasses()->toArray();
+        $classes = $this->classService->allClasses()->toArray();
 
-        return Response::json($result);
+        return Response::json($classes);
     }
 
     public function store(CreateClassRequest $request)
     {
         try {
 
-            $class = $this->classService->createClass($request->dto);
-            return Response::json($class);
+            $classes = $this->classService->createClass($request->dto);
+            return Response::json($classes);
         } catch (Exception $th) {
 
             return Response::json([
