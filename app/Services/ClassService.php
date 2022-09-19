@@ -78,14 +78,14 @@ class ClassService extends AbstractService
 
         $name = $data->name;
         $size = $data->size;
-        $learner_with_SEN = $data->SEN;
+        $SEN = $data->SEN;
         $location = $data->location;
 
         try {
             $class->update([
                 "name" => $name,
                 "size" => $size,
-                "learner_with_SEN" => $learner_with_SEN,
+                "learner_with_SEN" => $SEN,
                 "location" => $location,
             ]);
 

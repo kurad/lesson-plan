@@ -26,8 +26,8 @@ class ClassSetupController extends Controller
     {
         try {
 
-            $classes = $this->classService->createClass($request->dto);
-            return Response::json($classes);
+            $classe = $this->classService->createClass($request->dto);
+            return Response::json($classe);
         } catch (Exception $th) {
 
             return Response::json([

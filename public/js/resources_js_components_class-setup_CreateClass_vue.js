@@ -98,13 +98,16 @@ var render = function render() {
   }, [_c("label", [_vm._v("Class Size")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
-      rawName: "v-model",
+      rawName: "v-model.number",
       value: _vm.classes.size,
-      expression: "classes.size"
+      expression: "classes.size",
+      modifiers: {
+        number: true
+      }
     }],
     staticClass: "form-control",
     attrs: {
-      type: "text"
+      type: "number"
     },
     domProps: {
       value: _vm.classes.size
@@ -113,7 +116,10 @@ var render = function render() {
       input: function input($event) {
         if ($event.target.composing) return;
 
-        _vm.$set(_vm.classes, "size", $event.target.value);
+        _vm.$set(_vm.classes, "size", _vm._n($event.target.value));
+      },
+      blur: function blur($event) {
+        return _vm.$forceUpdate();
       }
     }
   })]), _vm._v(" "), _c("div", {
@@ -121,9 +127,12 @@ var render = function render() {
   }, [_c("label", [_vm._v("Learner with SEN")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
-      rawName: "v-model",
+      rawName: "v-model.number",
       value: _vm.classes.SEN,
-      expression: "classes.SEN"
+      expression: "classes.SEN",
+      modifiers: {
+        number: true
+      }
     }],
     staticClass: "form-control",
     attrs: {
@@ -136,7 +145,10 @@ var render = function render() {
       input: function input($event) {
         if ($event.target.composing) return;
 
-        _vm.$set(_vm.classes, "SEN", $event.target.value);
+        _vm.$set(_vm.classes, "SEN", _vm._n($event.target.value));
+      },
+      blur: function blur($event) {
+        return _vm.$forceUpdate();
       }
     }
   })]), _vm._v(" "), _c("div", {

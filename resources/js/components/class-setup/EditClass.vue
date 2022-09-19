@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <form @submit.prevent="addClass">
+                            <form @submit.prevent="updateClass">
                                 <div class="form-group">
                                     <label>Name</label>
                                     <input type="text" class="form-control" v-model="classes.name">
@@ -43,15 +43,20 @@ export default {
             classes: {}
         }
     },
+    created() {
+        axios
+            .get(`http://localhost:8000/api/v1/class-setup/${this.$route.params.id}`)
+            .then((res) => {
+                this.classes = res.data;
+            });
+    },
     methods: {
-        addClass() {
+        updateClass() {
             axios
-                .post('/api/v1/class-setup', this.classes)
-                .then(response => (
-                    this.$router.push({ name: 'classList' })
-                ))
-                .catch(err => console.log(err))
-                .finally(() => this.loading = false)
+                .put(`http://localhost:8000/api/v1/class-setup/${this.$route.params.id}`, this.classes)
+                .then((res) => {
+                    this.$router.push({ name: 'classList' });
+                });
         }
     }
 }

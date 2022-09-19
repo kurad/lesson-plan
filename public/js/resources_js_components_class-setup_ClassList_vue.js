@@ -113,7 +113,7 @@ var render = function render() {
       staticClass: "btn btn-success",
       attrs: {
         to: {
-          name: "edit",
+          name: "class.edit",
           params: {
             id: item.id
           }

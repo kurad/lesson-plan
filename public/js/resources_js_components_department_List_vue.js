@@ -119,7 +119,9 @@ var render = function render() {
           }
         }
       }
-    }, [_vm._v("\n                                        Edit")]), _vm._v(" "), _c("button", {
+    }, [_c("i", {
+      staticClass: "fas fa-pencil-alt"
+    })]), _vm._v(" "), _c("button", {
       staticClass: "btn btn-danger",
       attrs: {
         type: "button"
@@ -129,7 +131,9 @@ var render = function render() {
           return _vm.deleteDepartment(item.id);
         }
       }
-    }, [_vm._v("Delete")])], 1)]);
+    }, [_c("i", {
+      staticClass: "fas fa-trash-alt"
+    })])], 1)]);
   }), 0)])])])])])]);
 };
 

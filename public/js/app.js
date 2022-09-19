@@ -5520,6 +5520,10 @@ var createClass = function createClass() {
   return __webpack_require__.e(/*! import() */ "resources_js_components_class-setup_CreateClass_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/class-setup/CreateClass.vue */ "./resources/js/components/class-setup/CreateClass.vue"));
 };
 
+var editClass = function editClass() {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_class-setup_EditClass_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/class-setup/EditClass.vue */ "./resources/js/components/class-setup/EditClass.vue"));
+};
+
 var unitList = function unitList() {
   return __webpack_require__.e(/*! import() */ "resources_js_components_units_unitList_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/units/unitList.vue */ "./resources/js/components/units/unitList.vue"));
 };
@@ -5540,6 +5544,10 @@ var routes = [{
   name: 'edit',
   path: '/edit/:id',
   component: editDepartment
+}, {
+  name: 'class.edit',
+  path: '/class/:id',
+  component: editClass
 }, {
   name: 'classList',
   path: '/classes',
@@ -43584,7 +43592,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_department_List_vue":1,"resources_js_components_department_create_vue":1,"resources_js_components_department_edit_vue":1,"resources_js_components_class-setup_ClassList_vue":1,"resources_js_components_class-setup_CreateClass_vue":1,"resources_js_components_units_unitList_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_department_List_vue":1,"resources_js_components_department_create_vue":1,"resources_js_components_department_edit_vue":1,"resources_js_components_class-setup_ClassList_vue":1,"resources_js_components_class-setup_CreateClass_vue":1,"resources_js_components_class-setup_EditClass_vue":1,"resources_js_components_units_unitList_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

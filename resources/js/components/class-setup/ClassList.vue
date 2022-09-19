@@ -30,7 +30,8 @@
                                     <td>{{ item.learner_with_SEN }}</td>
                                     <td>{{ item.location }}</td>
                                     <td>
-                                        <router-link :to='{name:"edit",params:{id:item.id}}' class="btn btn-success">
+                                        <router-link :to='{name:"class.edit",params:{id:item.id}}'
+                                            class="btn btn-success">
                                             Edit</router-link>
                                         <button type="button" @click="deleteClass(item.id)"
                                             class="btn btn-danger">Delete</button>
