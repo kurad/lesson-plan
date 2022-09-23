@@ -31,10 +31,11 @@
                                     <td>{{ item.location }}</td>
                                     <td>
                                         <router-link :to='{name:"class.edit",params:{id:item.id}}'
-                                            class="btn btn-success">
-                                            Edit</router-link>
+                                            class="btn btn-success btn-xs">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </router-link>
                                         <button type="button" @click="deleteClass(item.id)"
-                                            class="btn btn-danger">Delete</button>
+                                            class="btn btn-danger btn-xs"><i class="fas fa-trash-alt"></i></button>
                                     </td>
                                 </tr>
                             </tbody>

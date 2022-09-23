@@ -5528,6 +5528,14 @@ var unitList = function unitList() {
   return __webpack_require__.e(/*! import() */ "resources_js_components_units_unitList_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/units/unitList.vue */ "./resources/js/components/units/unitList.vue"));
 };
 
+var createUnit = function createUnit() {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_units_createUnit_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/units/createUnit.vue */ "./resources/js/components/units/createUnit.vue"));
+};
+
+var editUnit = function editUnit() {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_units_editUnit_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/units/editUnit.vue */ "./resources/js/components/units/editUnit.vue"));
+};
+
 var routes = [{
   name: 'dashboard',
   path: '/dashboard',
@@ -5560,6 +5568,14 @@ var routes = [{
   name: 'unitList',
   path: '/units',
   component: unitList
+}, {
+  name: 'unit.create',
+  path: '/units/create',
+  component: createUnit
+}, {
+  name: 'unit.edit',
+  path: '/units/edit',
+  component: editUnit
 }];
 
 /***/ }),
@@ -43562,6 +43578,18 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -43592,7 +43620,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_department_List_vue":1,"resources_js_components_department_create_vue":1,"resources_js_components_department_edit_vue":1,"resources_js_components_class-setup_ClassList_vue":1,"resources_js_components_class-setup_CreateClass_vue":1,"resources_js_components_class-setup_EditClass_vue":1,"resources_js_components_units_unitList_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_department_List_vue":1,"resources_js_components_department_create_vue":1,"resources_js_components_department_edit_vue":1,"resources_js_components_class-setup_ClassList_vue":1,"resources_js_components_class-setup_CreateClass_vue":1,"resources_js_components_class-setup_EditClass_vue":1,"resources_js_components_units_unitList_vue":1,"resources_js_components_units_createUnit_vue":1,"resources_js_components_units_editUnit_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

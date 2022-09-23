@@ -110,17 +110,19 @@ var render = function render() {
     return _c("tr", {
       key: item.id
     }, [_c("td", [_vm._v(_vm._s(item.id))]), _vm._v(" "), _c("td", [_vm._v("Unit " + _vm._s(item.unit_no) + ": " + _vm._s(item.title))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(item.key_unit_competence))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(item.subject.name))]), _vm._v(" "), _c("td", [_c("router-link", {
-      staticClass: "btn btn-success",
+      staticClass: "btn btn-success btn-xs",
       attrs: {
         to: {
-          name: "edit",
+          name: "unit.edit",
           params: {
             id: item.id
           }
         }
       }
-    }, [_vm._v("\n                                        Edit")]), _vm._v(" "), _c("button", {
-      staticClass: "btn btn-danger",
+    }, [_c("i", {
+      staticClass: "fas fa-pencil-alt"
+    })]), _vm._v(" "), _c("button", {
+      staticClass: "btn btn-danger btn-xs",
       attrs: {
         type: "button"
       },
@@ -129,7 +131,9 @@ var render = function render() {
           return _vm.deleteDepartment(item.id);
         }
       }
-    }, [_vm._v("Delete")])], 1)]);
+    }, [_c("i", {
+      staticClass: "fas fa-trash-alt sm"
+    })])], 1)]);
   }), 0)])])])])])]);
 };
 

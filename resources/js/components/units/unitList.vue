@@ -28,10 +28,13 @@
                                     <td>{{ item.key_unit_competence }}</td>
                                     <td>{{ item.subject.name }}</td>
                                     <td>
-                                        <router-link :to='{name:"edit",params:{id:item.id}}' class="btn btn-success">
-                                            Edit</router-link>
+                                        <router-link :to='{name:"unit.edit",params:{id:item.id}}'
+                                            class="btn btn-success btn-xs">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </router-link>
                                         <button type="button" @click="deleteDepartment(item.id)"
-                                            class="btn btn-danger">Delete</button>
+                                            class="btn btn-danger btn-xs">
+                                            <i class="fas fa-trash-alt sm"></i></button>
                                     </td>
                                 </tr>
                             </tbody>

@@ -182,7 +182,7 @@ var render = function render() {
     attrs: {
       type: "submit"
     }
-  }, [_vm._v("Create")])])])])])])])]);
+  }, [_vm._v("Update")])])])])])])])]);
 };
 
 var staticRenderFns = [function () {

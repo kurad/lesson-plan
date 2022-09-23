@@ -110,7 +110,7 @@ var render = function render() {
     return _c("tr", {
       key: item.id
     }, [_c("td", [_vm._v(_vm._s(item.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(item.size))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(item.learner_with_SEN))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(item.location))]), _vm._v(" "), _c("td", [_c("router-link", {
-      staticClass: "btn btn-success",
+      staticClass: "btn btn-success btn-xs",
       attrs: {
         to: {
           name: "class.edit",
@@ -119,8 +119,10 @@ var render = function render() {
           }
         }
       }
-    }, [_vm._v("\n                                        Edit")]), _vm._v(" "), _c("button", {
-      staticClass: "btn btn-danger",
+    }, [_c("i", {
+      staticClass: "fas fa-pencil-alt"
+    })]), _vm._v(" "), _c("button", {
+      staticClass: "btn btn-danger btn-xs",
       attrs: {
         type: "button"
       },
@@ -129,7 +131,9 @@ var render = function render() {
           return _vm.deleteClass(item.id);
         }
       }
-    }, [_vm._v("Delete")])], 1)]);
+    }, [_c("i", {
+      staticClass: "fas fa-trash-alt"
+    })])], 1)]);
   }), 0)])])])])])]);
 };
 

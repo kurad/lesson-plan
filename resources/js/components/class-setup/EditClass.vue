@@ -26,7 +26,7 @@
                                     <input type="text" class="form-control" v-model="classes.location">
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">Create</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
                             </form>
                         </div>
                     </div>

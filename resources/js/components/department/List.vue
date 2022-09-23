@@ -24,11 +24,12 @@
                                     <td>{{ item.id }}</td>
                                     <td>{{ item.name }}</td>
                                     <td>
-                                        <router-link :to='{name:"edit",params:{id:item.id}}' class="btn btn-success">
+                                        <router-link :to='{name:"edit",params:{id:item.id}}'
+                                            class="btn btn-success btn-xs">
                                             <i class="fas fa-pencil-alt"></i>
                                         </router-link>
                                         <button type="button" @click="deleteDepartment(item.id)"
-                                            class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                            class="btn btn-danger btn-xs"><i class="fas fa-trash-alt"></i></button>
                                     </td>
                                 </tr>
                             </tbody>

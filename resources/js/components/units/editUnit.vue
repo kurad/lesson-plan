@@ -7,9 +7,8 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <form @submit.prevent="addUnit">
-                            <div class="col-md-4">
-
+                        <div class="col-md-6">
+                            <form @submit.prevent="updateUnit">
                                 <div class="form-group">
                                     <label>Subject</label>
                                     <select class="form-control" v-model="units.subjectId">
@@ -22,8 +21,6 @@
                                     <label>Unit No</label>
                                     <input type="number" class="form-control" v-model.number="units.unitNo">
                                 </div>
-                            </div>
-                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Unit Title</label>
                                     <input type="text" class="form-control" v-model="units.title">
@@ -32,11 +29,11 @@
                                     <label>Key Unit Competence</label>
                                     <textarea class="form-control" v-model="units.unitCompetence"></textarea>
                                 </div>
-                            </div>
 
-                            <button type="submit" class="btn btn-primary">Create</button>
 
-                        </form>
+                                <button type="submit" class="btn btn-primary">Create</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -45,6 +42,8 @@
 </template>
  
 <script>
+import axios from 'axios';
+
 
 export default {
     data() {
@@ -55,6 +54,11 @@ export default {
         }
     },
     created() {
+        axios
+            .get(`http://localhost:8000/api/v1/unit-management/${this.$route.params.id}`)
+            .then((res) => {
+                this.units = res.data;
+            });
         this.getSubjects();
     },
     methods: {
@@ -64,14 +68,12 @@ export default {
             }.bind(this));
         },
 
-        addUnit() {
+        updateUnit() {
             axios
-                .post('http://localhost:8000/api/v1/unit-management', this.units)
-                .then(response => (
-                    this.$router.push({ name: 'unitList' })
-                ))
-                .catch(err => console.log(err))
-                .finally(() => this.loading = false)
+                .put(`http://localhost:8000/api/v1/unit-management/${this.$route.params.id}`, this.units)
+                .then((res) => {
+                    this.$router.push({ name: 'unitList' });
+                });
         }
     }
 }

@@ -110,7 +110,7 @@ var render = function render() {
     return _c("tr", {
       key: item.id
     }, [_c("td", [_vm._v(_vm._s(item.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c("td", [_c("router-link", {
-      staticClass: "btn btn-success",
+      staticClass: "btn btn-success btn-xs",
       attrs: {
         to: {
           name: "edit",
@@ -122,7 +122,7 @@ var render = function render() {
     }, [_c("i", {
       staticClass: "fas fa-pencil-alt"
     })]), _vm._v(" "), _c("button", {
-      staticClass: "btn btn-danger",
+      staticClass: "btn btn-danger btn-xs",
       attrs: {
         type: "button"
       },

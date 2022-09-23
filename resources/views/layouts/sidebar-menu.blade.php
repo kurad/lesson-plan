@@ -19,7 +19,7 @@
         </li>
         <li class="nav-item">
             <router-link to="/classes" class="nav-link">
-                <i class="nav-icon fas fa-list orange"></i>
+                <i class="nav-icon fab fa-leanpub orange"></i>
                 <p>
                     Classes
                 </p>
