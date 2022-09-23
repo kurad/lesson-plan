@@ -36,6 +36,15 @@
         </li>
 
         <li class="nav-item">
+            <router-link to="/lessons" class="nav-link">
+                <i class="nav-icon fas fa-book orange"></i>
+                <p>
+                    Lessons
+                </p>
+            </router-link>
+        </li>
+
+        <li class="nav-item">
             <router-link to="/users" class="nav-link">
                 <i class="fa fa-users nav-icon blue"></i>
                 <p>Users</p>

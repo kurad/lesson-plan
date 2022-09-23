@@ -12,7 +12,7 @@
 
                                 <div class="form-group">
                                     <label>Subject</label>
-                                    <select class="form-control" v-model="units.subjectId">
+                                    <select class="form-control" v-model="units.subject_id">
                                         <option value="0">-- Select Subject --</option>
                                         <option v-for="item in subjects" :value="item.id">{{ item.name}} </option>
 
@@ -20,7 +20,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Unit No</label>
-                                    <input type="number" class="form-control" v-model.number="units.unitNo">
+                                    <input type="number" class="form-control" v-model.number="units.unit_no">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Key Unit Competence</label>
-                                    <textarea class="form-control" v-model="units.unitCompetence"></textarea>
+                                    <textarea class="form-control" v-model="units.key_unit_competence"></textarea>
                                 </div>
                             </div>
 
@@ -49,7 +49,12 @@
 export default {
     data() {
         return {
-            units: {},
+            units: {
+                subject_id: null,
+                unit_no: null,
+                title: null,
+                key_unit_competence: null,
+            },
             subject: 0,
             subjects: []
         }
@@ -66,7 +71,12 @@ export default {
 
         addUnit() {
             axios
-                .post('http://localhost:8000/api/v1/unit-management', this.units)
+                .post('http://localhost:8000/api/v1/unit-management', {
+                    subjectId: this.units.subject_id,
+                    unitNo: this.units.unit_no,
+                    title: this.units.title,
+                    unitCompetence: this.units.key_unit_competence,
+                })
                 .then(response => (
                     this.$router.push({ name: 'unitList' })
                 ))

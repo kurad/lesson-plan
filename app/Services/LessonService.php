@@ -38,14 +38,14 @@ class LessonService extends AbstractService
         $reference = $data->reference;
 
 
-        $unitId = Unit::find($unitId);
-        if (is_null($unitId)) {
+        $unit = Unit::find($unitId);
+        if (is_null($unit)) {
             throw new ItemNotFoundException("The unit does not exist");
         }
         try {
             $lesson = Lesson::create([
                 "title" => $title,
-                "unit_id" => $unitId,
+                "unit_id" => $unit->id,
                 "topic_area" => $topicArea,
                 "duration" => $duration,
                 "date" => $date,
@@ -61,12 +61,14 @@ class LessonService extends AbstractService
 
             return $lesson;
         } catch (Exception $th) {
+
             Log::error("Failed to create Lesson ", [
                 "message" => $th->getMessage(),
                 "function" => __FUNCTION__,
                 "class" => __CLASS__,
                 "trace" => $th->getTrace()
             ]);
+
             throw new UknownException("Sorry, there were some issues, contact the system admin");
         }
     }
@@ -82,7 +84,7 @@ class LessonService extends AbstractService
 
     public function allLessons(): Collection
     {
-        $lessons = Lesson::all();
+        $lessons = Lesson::with('unit')->get();
 
         return $lessons;
     }

@@ -5536,6 +5536,10 @@ var editUnit = function editUnit() {
   return __webpack_require__.e(/*! import() */ "resources_js_components_units_editUnit_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/units/editUnit.vue */ "./resources/js/components/units/editUnit.vue"));
 };
 
+var lessonList = function lessonList() {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_lessons_lessonList_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/lessons/lessonList.vue */ "./resources/js/components/lessons/lessonList.vue"));
+};
+
 var routes = [{
   name: 'dashboard',
   path: '/dashboard',
@@ -5574,8 +5578,12 @@ var routes = [{
   component: createUnit
 }, {
   name: 'unit.edit',
-  path: '/units/edit',
+  path: '/units/edit/:id',
   component: editUnit
+}, {
+  name: 'lessonList',
+  path: '/lessons',
+  component: lessonList
 }];
 
 /***/ }),
@@ -43620,7 +43628,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_department_List_vue":1,"resources_js_components_department_create_vue":1,"resources_js_components_department_edit_vue":1,"resources_js_components_class-setup_ClassList_vue":1,"resources_js_components_class-setup_CreateClass_vue":1,"resources_js_components_class-setup_EditClass_vue":1,"resources_js_components_units_unitList_vue":1,"resources_js_components_units_createUnit_vue":1,"resources_js_components_units_editUnit_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_department_List_vue":1,"resources_js_components_department_create_vue":1,"resources_js_components_department_edit_vue":1,"resources_js_components_class-setup_ClassList_vue":1,"resources_js_components_class-setup_CreateClass_vue":1,"resources_js_components_class-setup_EditClass_vue":1,"resources_js_components_units_unitList_vue":1,"resources_js_components_units_createUnit_vue":1,"resources_js_components_units_editUnit_vue":1,"resources_js_components_lessons_lessonList_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

@@ -14,7 +14,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      units: {},
+      units: {
+        subject_id: null,
+        unit_no: null,
+        title: null,
+        key_unit_competence: null
+      },
       subject: 0,
       subjects: []
     };
@@ -31,7 +36,12 @@ __webpack_require__.r(__webpack_exports__);
     addUnit: function addUnit() {
       var _this = this;
 
-      axios.post('http://localhost:8000/api/v1/unit-management', this.units).then(function (response) {
+      axios.post('http://localhost:8000/api/v1/unit-management', {
+        subjectId: this.units.subject_id,
+        unitNo: this.units.unit_no,
+        title: this.units.title,
+        unitCompetence: this.units.key_unit_competence
+      }).then(function (response) {
         return _this.$router.push({
           name: 'unitList'
         });
@@ -86,8 +96,8 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.units.subjectId,
-      expression: "units.subjectId"
+      value: _vm.units.subject_id,
+      expression: "units.subject_id"
     }],
     staticClass: "form-control",
     on: {
@@ -99,7 +109,7 @@ var render = function render() {
           return val;
         });
 
-        _vm.$set(_vm.units, "subjectId", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+        _vm.$set(_vm.units, "subject_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
       }
     }
   }, [_c("option", {
@@ -118,8 +128,8 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model.number",
-      value: _vm.units.unitNo,
-      expression: "units.unitNo",
+      value: _vm.units.unit_no,
+      expression: "units.unit_no",
       modifiers: {
         number: true
       }
@@ -129,13 +139,13 @@ var render = function render() {
       type: "number"
     },
     domProps: {
-      value: _vm.units.unitNo
+      value: _vm.units.unit_no
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
 
-        _vm.$set(_vm.units, "unitNo", _vm._n($event.target.value));
+        _vm.$set(_vm.units, "unit_no", _vm._n($event.target.value));
       },
       blur: function blur($event) {
         return _vm.$forceUpdate();
@@ -172,18 +182,18 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.units.unitCompetence,
-      expression: "units.unitCompetence"
+      value: _vm.units.key_unit_competence,
+      expression: "units.key_unit_competence"
     }],
     staticClass: "form-control",
     domProps: {
-      value: _vm.units.unitCompetence
+      value: _vm.units.key_unit_competence
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
 
-        _vm.$set(_vm.units, "unitCompetence", $event.target.value);
+        _vm.$set(_vm.units, "key_unit_competence", $event.target.value);
       }
     }
   })])]), _vm._v(" "), _c("button", {

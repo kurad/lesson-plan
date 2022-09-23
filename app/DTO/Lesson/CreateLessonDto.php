@@ -3,7 +3,6 @@
 namespace App\DTO\Lesson;
 
 use App\DTO\InitializeDtoTrait;
-use Illuminate\Support\Facades\Date;
 
 class CreateLessonDto
 {

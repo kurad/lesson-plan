@@ -29,7 +29,7 @@ class CreateLessonRequest extends FormRequest
             "unitId" => "required|integer",
             "topicArea" => "required|string",
             "duration" => "required|integer",
-            "lessonDate" => "required|string",
+            "lessonDate" => "required|date",
             "instructions" => "nullable|string",
             "knowledge" => "required|string",
             "skills" => "required|string",

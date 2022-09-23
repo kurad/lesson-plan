@@ -11,7 +11,7 @@
                             <form @submit.prevent="updateUnit">
                                 <div class="form-group">
                                     <label>Subject</label>
-                                    <select class="form-control" v-model="units.subjectId">
+                                    <select class="form-control" v-model="units.subject_id">
                                         <option value="0">-- Select Subject --</option>
                                         <option v-for="item in subjects" :value="item.id">{{ item.name}} </option>
 
@@ -19,7 +19,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Unit No</label>
-                                    <input type="number" class="form-control" v-model.number="units.unitNo">
+                                    <input type="number" class="form-control" v-model.number="units.unit_no">
                                 </div>
                                 <div class="form-group">
                                     <label>Unit Title</label>
@@ -27,11 +27,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Key Unit Competence</label>
-                                    <textarea class="form-control" v-model="units.unitCompetence"></textarea>
+                                    <textarea class="form-control" v-model="units.key_unit_competence"></textarea>
                                 </div>
 
 
-                                <button type="submit" class="btn btn-primary">Create</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
                             </form>
                         </div>
                     </div>
@@ -48,7 +48,12 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            units: {},
+            units: {
+                subject_id: null,
+                unit_no: null,
+                title: null,
+                key_unit_competence: null,
+            },
             subject: 0,
             subjects: []
         }
@@ -70,7 +75,12 @@ export default {
 
         updateUnit() {
             axios
-                .put(`http://localhost:8000/api/v1/unit-management/${this.$route.params.id}`, this.units)
+                .put(`http://localhost:8000/api/v1/unit-management/${this.$route.params.id}`, {
+                    subjectId: this.units.subject_id,
+                    unitNo: this.units.unit_no,
+                    title: this.units.title,
+                    unitCompetence: this.units.key_unit_competence,
+                })
                 .then((res) => {
                     this.$router.push({ name: 'unitList' });
                 });

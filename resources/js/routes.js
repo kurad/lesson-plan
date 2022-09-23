@@ -10,6 +10,7 @@ const editClass = () => import('./components/class-setup/EditClass.vue');
 const unitList = () => import('./components/units/unitList.vue');
 const createUnit = () => import('./components/units/createUnit.vue');
 const editUnit = () => import('./components/units/editUnit.vue');
+const lessonList = () => import('./components/lessons/lessonList.vue');
 
 export const routes = [
     {
@@ -62,8 +63,13 @@ export const routes = [
     },
     {
         name: 'unit.edit',
-        path: '/units/edit',
+        path: '/units/edit/:id',
         component: editUnit
+    },
+    {
+        name: 'lessonList',
+        path: '/lessons',
+        component: lessonList
     },
 
 ];

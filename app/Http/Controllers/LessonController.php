@@ -16,19 +16,19 @@ class LessonController extends Controller
     public function __construct(public LessonService $lessonService)
     {
 
-        $this->middleware(["auth:sanctum"]);
+        //$this->middleware(["auth:sanctum"]);
     }
 
     public function index()
     {
-        /** @var User */
-        $user = request()->user();
-        if (!$user->tokenCan("lessons:all")) {
-            throw new ActionIsForbiddenException();
-        }
+        // /** @var User */
+        // $user = request()->user();
+        // if (!$user->tokenCan("lessons:all")) {
+        //     throw new ActionIsForbiddenException();
+        // }
 
-        $result = $this->lessonService->allLessons()->toArray();
-        return Response::json($result);
+        $lessons = $this->lessonService->allLessons()->toArray();
+        return Response::json($lessons);
     }
 
     public function store(CreateLessonRequest $request)
@@ -45,10 +45,11 @@ class LessonController extends Controller
             return Response::json($lesson);
         } catch (Exception $th) {
 
+            $error = getHttpMessageAndStatusCodeFromException($th);
+
             return Response::json([
-                "error" => $th->getMessage(),
-                "status" => 422
-            ], 422);
+                "message" => $error["message"],
+            ], $error["status"]);
         }
     }
 
